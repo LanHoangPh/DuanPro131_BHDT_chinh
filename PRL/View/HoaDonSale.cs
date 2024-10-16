@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PRL.View
-{
+{ 
     public class SaleSanPham
     {
         // Chúng ta tạo ra 1 ViewModel để chứa sản phẩm sau khi đã sale, giá bán thực tế lưu hóa đơn là giá SalePrice

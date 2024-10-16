@@ -164,31 +164,6 @@ namespace BUS.Services
         }
         public string ThanhToanHoaDon(Guid hoaDonId, long soTienKhachTra, long tongTienMoi)
         {
-            //var hoaDon = _context.HoaDons.Find(hoaDonId);
-            // if (hoaDon == null)
-            // {
-            //     return "Hóa đơn không tồn tại.";
-            // }
-
-            // var chiTietHoaDons = _context.ChiTietHoaDons.Where(ct => ct.MaHoaDon == hoaDonId).ToList();
-            // if (!chiTietHoaDons.Any())
-            // {
-            //     return "Không có chi tiết hóa đơn để thanh toán.";
-            // }
-
-            // hoaDon.TongTien = chiTietHoaDons.Sum(ct => ct.GiaSanPham * ct.SoLuong);
-            // if (soTienKhachTra < hoaDon.TongTien)
-            // {
-            //     return "Số tiền khách trả không đủ để thanh toán hóa đơn.";
-            // }
-
-            // hoaDon.TrangThai = 1;
-            // _context.HoaDons.Update(hoaDon);
-
-            // _context.ChiTietHoaDons.RemoveRange(chiTietHoaDons); // Xóa tất cả chi tiết hóa đơn liên quan
-            // _context.SaveChanges();
-
-            // return "Thanh toán thành công.";
             var hoaDon = _context.HoaDons.Find(hoaDonId);
             if (hoaDon == null)
             {
@@ -212,7 +187,7 @@ namespace BUS.Services
             hoaDon.TrangThai = 1; // Đánh dấu hóa đơn đã thanh toán
             _context.HoaDons.Update(hoaDon);
 
-            _context.ChiTietHoaDons.RemoveRange(chiTietHoaDons); // Xóa tất cả chi tiết hóa đơn liên quan
+            //_context.ChiTietHoaDons.RemoveRange(chiTietHoaDons); // Xóa tất cả chi tiết hóa đơn liên quan
             _context.SaveChanges();
 
             return "Thanh toán thành công.";

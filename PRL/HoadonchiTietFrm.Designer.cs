@@ -47,16 +47,18 @@
             pictureBox_hoadonchitiet = new PictureBox();
             label4 = new Label();
             txt_soluong_ct = new TextBox();
+            datagrihoadon = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridView_hoadonCTf).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_hoadonchitiet).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)datagrihoadon).BeginInit();
             SuspendLayout();
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(63, 214);
+            label5.Location = new Point(62, 145);
             label5.Name = "label5";
             label5.Size = new Size(119, 23);
             label5.TabIndex = 0;
@@ -65,7 +67,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(61, 141);
+            label3.Location = new Point(61, 85);
             label3.Name = "label3";
             label3.Size = new Size(111, 23);
             label3.TabIndex = 0;
@@ -73,7 +75,7 @@
             // 
             // txt_mahd_ct
             // 
-            txt_mahd_ct.Location = new Point(190, 139);
+            txt_mahd_ct.Location = new Point(190, 83);
             txt_mahd_ct.Name = "txt_mahd_ct";
             txt_mahd_ct.ReadOnly = true;
             txt_mahd_ct.Size = new Size(384, 30);
@@ -114,16 +116,16 @@
             // dataGridView_hoadonCTf
             // 
             dataGridView_hoadonCTf.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_hoadonCTf.Location = new Point(0, 321);
+            dataGridView_hoadonCTf.Location = new Point(0, 575);
             dataGridView_hoadonCTf.Name = "dataGridView_hoadonCTf";
             dataGridView_hoadonCTf.RowHeadersWidth = 51;
-            dataGridView_hoadonCTf.Size = new Size(1114, 504);
+            dataGridView_hoadonCTf.Size = new Size(1114, 250);
             dataGridView_hoadonCTf.TabIndex = 22;
             dataGridView_hoadonCTf.CellClick += dataGridView_hoadonCTf_CellClick;
             // 
             // txt_masp_ct
             // 
-            txt_masp_ct.Location = new Point(190, 215);
+            txt_masp_ct.Location = new Point(189, 146);
             txt_masp_ct.Name = "txt_masp_ct";
             txt_masp_ct.ReadOnly = true;
             txt_masp_ct.Size = new Size(384, 30);
@@ -137,9 +139,9 @@
             groupBox1.Controls.Add(btn_delete_hdctf);
             groupBox1.Dock = DockStyle.Right;
             groupBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(1120, 315);
+            groupBox1.Location = new Point(1120, 216);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(333, 510);
+            groupBox1.Size = new Size(333, 609);
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             groupBox1.Text = "Chức Năng";
@@ -156,7 +158,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(636, 65);
+            label1.Location = new Point(636, 30);
             label1.Name = "label1";
             label1.Size = new Size(120, 23);
             label1.TabIndex = 0;
@@ -164,7 +166,7 @@
             // 
             // txt_giasp_ct
             // 
-            txt_giasp_ct.Location = new Point(770, 62);
+            txt_giasp_ct.Location = new Point(770, 27);
             txt_giasp_ct.Name = "txt_giasp_ct";
             txt_giasp_ct.ReadOnly = true;
             txt_giasp_ct.Size = new Size(384, 30);
@@ -172,7 +174,7 @@
             // 
             // txt_mact
             // 
-            txt_mact.Location = new Point(190, 58);
+            txt_mact.Location = new Point(190, 23);
             txt_mact.Name = "txt_mact";
             txt_mact.ReadOnly = true;
             txt_mact.Size = new Size(384, 30);
@@ -181,7 +183,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(61, 61);
+            label2.Location = new Point(61, 26);
             label2.Name = "label2";
             label2.Size = new Size(102, 23);
             label2.TabIndex = 0;
@@ -206,7 +208,7 @@
             groupBox2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(0, 0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1453, 315);
+            groupBox2.Size = new Size(1453, 216);
             groupBox2.TabIndex = 20;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông Tin";
@@ -224,7 +226,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(636, 138);
+            label4.Location = new Point(636, 82);
             label4.Name = "label4";
             label4.Size = new Size(87, 23);
             label4.TabIndex = 0;
@@ -232,17 +234,28 @@
             // 
             // txt_soluong_ct
             // 
-            txt_soluong_ct.Location = new Point(770, 135);
+            txt_soluong_ct.Location = new Point(770, 79);
             txt_soluong_ct.Name = "txt_soluong_ct";
             txt_soluong_ct.ReadOnly = true;
             txt_soluong_ct.Size = new Size(384, 30);
             txt_soluong_ct.TabIndex = 1;
+            // 
+            // datagrihoadon
+            // 
+            datagrihoadon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            datagrihoadon.Location = new Point(12, 231);
+            datagrihoadon.Name = "datagrihoadon";
+            datagrihoadon.RowHeadersWidth = 51;
+            datagrihoadon.Size = new Size(1102, 256);
+            datagrihoadon.TabIndex = 23;
+            datagrihoadon.CellContentClick += dataGridView1_CellContentClick;
             // 
             // HoadonchiTietFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1453, 825);
+            Controls.Add(datagrihoadon);
             Controls.Add(dataGridView_hoadonCTf);
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
@@ -254,6 +267,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_hoadonchitiet).EndInit();
+            ((System.ComponentModel.ISupportInitialize)datagrihoadon).EndInit();
             ResumeLayout(false);
         }
 
@@ -276,5 +290,6 @@
         private Label label4;
         private TextBox txt_soluong_ct;
         private PictureBox pictureBox_hoadonchitiet;
+        private DataGridView datagrihoadon;
     }
 }
