@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyKhachHangfrm));
             dataGridView_kh = new DataGridView();
             groupBox1 = new GroupBox();
             textBox1 = new TextBox();
@@ -44,9 +45,11 @@
             txt_tenkh = new TextBox();
             txt_diemtichluy = new TextBox();
             groupBox2 = new GroupBox();
+            pictureBox_kh = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView_kh).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_kh).BeginInit();
             SuspendLayout();
             // 
             // dataGridView_kh
@@ -61,6 +64,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.FromArgb(128, 255, 128);
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(button5);
             groupBox1.Controls.Add(button4);
@@ -201,6 +205,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.FromArgb(128, 255, 128);
+            groupBox2.Controls.Add(pictureBox_kh);
             groupBox2.Controls.Add(txt_diemtichluy);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label3);
@@ -216,6 +222,16 @@
             groupBox2.TabIndex = 4;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông Tin";
+            // 
+            // pictureBox_kh
+            // 
+            pictureBox_kh.BackgroundImage = (Image)resources.GetObject("pictureBox_kh.BackgroundImage");
+            pictureBox_kh.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox_kh.Location = new Point(113, 116);
+            pictureBox_kh.Name = "pictureBox_kh";
+            pictureBox_kh.Size = new Size(80, 79);
+            pictureBox_kh.TabIndex = 7;
+            pictureBox_kh.TabStop = false;
             // 
             // QuanLyKhachHangfrm
             // 
@@ -234,6 +250,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_kh).EndInit();
             ResumeLayout(false);
         }
 
@@ -254,5 +271,6 @@
         private TextBox textBox1;
         private Button button5;
         private Button button4;
+        private PictureBox pictureBox_kh;
     }
 }

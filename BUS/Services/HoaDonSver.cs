@@ -34,15 +34,23 @@ namespace BUS.Services
         }
         public string DeleteHD(Guid hoaDonId)
         {
-            var hoaDon = _context.HoaDons.Find(hoaDonId);
-            if (hoaDon == null)
+            try
             {
-                return "Hóa đơn không tồn tại";
-            }
+                var hoaDon = _context.HoaDons.Find(hoaDonId);
+                if (hoaDon == null)
+                {
+                    return "Hóa đơn không tồn tại";
+                }
 
-            _context.HoaDons.Remove(hoaDon);
-            _context.SaveChanges();
-            return "Xóa thành công";
+                _context.HoaDons.Remove(hoaDon);
+                _context.SaveChanges();
+                return "Xóa thành công";
+            }
+            catch (Exception) 
+            {
+                return "Xóa Thất bại do khóa ngoại";
+            }
+           
         }
         public string UpdateHoaDonStatus(Guid hoaDonId, int trangThai)
         {
@@ -51,12 +59,21 @@ namespace BUS.Services
             {
                 return "Hóa đơn không tồn tại.";
             }
+            try
+            {
+             
 
-            hoaDon.TrangThai = trangThai;
-            _context.HoaDons.Update(hoaDon);
-            _context.SaveChanges();
+                hoaDon.TrangThai = trangThai;
+                _context.HoaDons.Update(hoaDon);
+                _context.SaveChanges();
 
-            return "Cập nhật trạng thái hóa đơn thành công.";
+                return "Cập nhật trạng thái hóa đơn thành công.";
+            }
+            catch(Exception ex)
+            {
+                return "Thất Bại"+ex.Message;
+            }
+            
         }
         public string CreateLsthanhtoan(Guid maHoaDon, Guid maHinhThuc, long soTienKhachDua, long tongTienHoaDon)
         {
@@ -66,7 +83,7 @@ namespace BUS.Services
                 return "Hóa đơn không tồn tại.";
             }
 
-            long soTienCanTra = soTienKhachDua -hoaDon.TongTien  ;
+            long soTienCanTra = soTienKhachDua - tongTienHoaDon;
             string ghiChu = $"Số tiền khách đưa: {soTienKhachDua}, Số tiền cần trả: {soTienCanTra}";
 
             var lichSuThanhToan = new LichSuThanhToan
@@ -76,13 +93,15 @@ namespace BUS.Services
                 MaHinhThuc = maHinhThuc,
                 SoTien = soTienKhachDua,
                 GhiChu = ghiChu
-                
-            };
 
-            _context.LichSuThanhToans.Add(lichSuThanhToan);
-            _context.SaveChanges();
+            };
+                
+
+                _context.LichSuThanhToans.Add(lichSuThanhToan);
+                _context.SaveChanges();
 
             return "Thanh Toan va Tạo lịch sử thanh toán thành công.";
+            
         }
     }
 }

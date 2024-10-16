@@ -34,6 +34,7 @@
             lb_back = new Label();
             tableLayoutPanel_sp = new TableLayoutPanel();
             groupBox2 = new GroupBox();
+            lb_tongtienmoi = new Label();
             button1 = new Button();
             txt_sotien = new TextBox();
             label3 = new Label();
@@ -129,6 +130,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = SystemColors.InactiveCaption;
+            groupBox2.Controls.Add(lb_tongtienmoi);
             groupBox2.Controls.Add(button1);
             groupBox2.Controls.Add(txt_sotien);
             groupBox2.Controls.Add(label3);
@@ -162,11 +165,20 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Hóa đơn";
             // 
+            // lb_tongtienmoi
+            // 
+            lb_tongtienmoi.AutoSize = true;
+            lb_tongtienmoi.Location = new Point(267, 206);
+            lb_tongtienmoi.Name = "lb_tongtienmoi";
+            lb_tongtienmoi.Size = new Size(55, 23);
+            lb_tongtienmoi.TabIndex = 18;
+            lb_tongtienmoi.Text = ".........";
+            // 
             // button1
             // 
-            button1.Location = new Point(250, 195);
+            button1.Location = new Point(491, 195);
             button1.Name = "button1";
-            button1.Size = new Size(94, 34);
+            button1.Size = new Size(62, 34);
             button1.TabIndex = 17;
             button1.Text = "Show";
             button1.UseVisualStyleBackColor = true;
@@ -193,7 +205,7 @@
             // 
             button_clear.BackgroundImage = Properties.Resources.clear;
             button_clear.BackgroundImageLayout = ImageLayout.Zoom;
-            button_clear.Location = new Point(356, 195);
+            button_clear.Location = new Point(433, 195);
             button_clear.Name = "button_clear";
             button_clear.Size = new Size(51, 34);
             button_clear.TabIndex = 14;
@@ -204,7 +216,7 @@
             // 
             button2.BackgroundImage = Properties.Resources.delete;
             button2.BackgroundImageLayout = ImageLayout.Zoom;
-            button2.Location = new Point(423, 195);
+            button2.Location = new Point(435, 20);
             button2.Name = "button2";
             button2.Size = new Size(52, 34);
             button2.TabIndex = 13;
@@ -215,7 +227,7 @@
             // 
             btn_addhd.BackgroundImage = Properties.Resources.add;
             btn_addhd.BackgroundImageLayout = ImageLayout.Zoom;
-            btn_addhd.Location = new Point(493, 195);
+            btn_addhd.Location = new Point(493, 19);
             btn_addhd.Name = "btn_addhd";
             btn_addhd.Size = new Size(60, 34);
             btn_addhd.TabIndex = 12;
@@ -280,9 +292,9 @@
             // comboBox_phone
             // 
             comboBox_phone.FormattingEnabled = true;
-            comboBox_phone.Location = new Point(146, 58);
+            comboBox_phone.Location = new Point(327, 58);
             comboBox_phone.Name = "comboBox_phone";
-            comboBox_phone.Size = new Size(407, 31);
+            comboBox_phone.Size = new Size(226, 31);
             comboBox_phone.TabIndex = 8;
             comboBox_phone.SelectedIndexChanged += comboBox_phone_SelectedIndexChanged;
             comboBox_phone.TextChanged += comboBox_phone_TextChanged;
@@ -299,7 +311,7 @@
             // 
             txt_phone.Location = new Point(127, 58);
             txt_phone.Name = "txt_phone";
-            txt_phone.Size = new Size(13, 30);
+            txt_phone.Size = new Size(194, 30);
             txt_phone.TabIndex = 6;
             txt_phone.TextChanged += txt_phone_TextChanged;
             // 
@@ -313,6 +325,7 @@
             // lb_tongtien
             // 
             lb_tongtien.AutoSize = true;
+            lb_tongtien.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold | FontStyle.Strikeout, GraphicsUnit.Point, 0);
             lb_tongtien.Location = new Point(120, 206);
             lb_tongtien.Name = "lb_tongtien";
             lb_tongtien.Size = new Size(64, 23);
@@ -437,5 +450,6 @@
         private Button button1;
         private Button btn_hoantra;
         private Label label8;
+        private Label lb_tongtienmoi;
     }
 }

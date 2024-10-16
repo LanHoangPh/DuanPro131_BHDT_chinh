@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             panel1 = new Panel();
             label_acc = new Label();
             label2 = new Label();
@@ -99,14 +100,14 @@
             // panel2
             // 
             panel2.BackColor = Color.MediumTurquoise;
+            panel2.Controls.Add(btn_qlvoucher);
             panel2.Controls.Add(button8);
+            panel2.Controls.Add(btn_qlkm);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(button9);
             panel2.Controls.Add(button3);
             panel2.Controls.Add(button_hinhthucthanhtoan);
             panel2.Controls.Add(btn_hoadon);
-            panel2.Controls.Add(btn_qlvoucher);
-            panel2.Controls.Add(btn_qlkm);
             panel2.Controls.Add(btn_doidiem);
             panel2.Controls.Add(button7);
             panel2.Controls.Add(btn_lstt);
@@ -124,7 +125,7 @@
             // 
             button8.BackColor = Color.MediumAquamarine;
             button8.FlatStyle = FlatStyle.Flat;
-            button8.Location = new Point(1, 722);
+            button8.Location = new Point(1, 721);
             button8.Name = "button8";
             button8.Size = new Size(282, 52);
             button8.TabIndex = 0;
@@ -135,11 +136,11 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.MediumTurquoise;
-            pictureBox1.BackgroundImage = Properties.Resources.tải_xuống;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(80, 12);
+            pictureBox1.Location = new Point(82, 6);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(125, 97);
+            pictureBox1.Size = new Size(119, 97);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
@@ -171,7 +172,7 @@
             // 
             button_hinhthucthanhtoan.BackColor = Color.MediumAquamarine;
             button_hinhthucthanhtoan.FlatStyle = FlatStyle.Flat;
-            button_hinhthucthanhtoan.Location = new Point(1, 611);
+            button_hinhthucthanhtoan.Location = new Point(1, 501);
             button_hinhthucthanhtoan.Name = "button_hinhthucthanhtoan";
             button_hinhthucthanhtoan.Size = new Size(282, 52);
             button_hinhthucthanhtoan.TabIndex = 0;
@@ -196,7 +197,7 @@
             // 
             btn_qlvoucher.BackColor = Color.MediumAquamarine;
             btn_qlvoucher.FlatStyle = FlatStyle.Flat;
-            btn_qlvoucher.Location = new Point(1, 556);
+            btn_qlvoucher.Location = new Point(2, 611);
             btn_qlvoucher.Name = "btn_qlvoucher";
             btn_qlvoucher.Padding = new Padding(2);
             btn_qlvoucher.Size = new Size(282, 52);
@@ -209,7 +210,7 @@
             // 
             btn_qlkm.BackColor = Color.MediumAquamarine;
             btn_qlkm.FlatStyle = FlatStyle.Flat;
-            btn_qlkm.Location = new Point(1, 501);
+            btn_qlkm.Location = new Point(1, 556);
             btn_qlkm.Name = "btn_qlkm";
             btn_qlkm.Padding = new Padding(2);
             btn_qlkm.Size = new Size(282, 52);
@@ -233,13 +234,14 @@
             // 
             // button7
             // 
-            button7.BackColor = Color.Lime;
+            button7.BackColor = Color.White;
+            button7.BackgroundImage = Properties.Resources.dangxuat;
+            button7.BackgroundImageLayout = ImageLayout.Zoom;
             button7.FlatStyle = FlatStyle.Flat;
-            button7.Location = new Point(0, 817);
+            button7.Location = new Point(82, 837);
             button7.Name = "button7";
-            button7.Size = new Size(282, 52);
+            button7.Size = new Size(104, 59);
             button7.TabIndex = 0;
-            button7.Text = "Đăng Xuất";
             button7.UseVisualStyleBackColor = false;
             button7.Click += button7_Click;
             // 

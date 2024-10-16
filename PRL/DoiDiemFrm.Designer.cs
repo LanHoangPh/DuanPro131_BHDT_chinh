@@ -48,6 +48,7 @@
             btndoi_vou = new Button();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            pictureBox_doidiem = new PictureBox();
             comboBox_sdtkhdd = new ComboBox();
             label9 = new Label();
             txt_diemkhdd = new TextBox();
@@ -55,6 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView_doidiem).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_doidiem).BeginInit();
             SuspendLayout();
             // 
             // dataGridView_doidiem
@@ -70,15 +72,16 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(1355, 23);
+            label8.Location = new Point(1300, 36);
             label8.Name = "label8";
-            label8.Size = new Size(104, 23);
+            label8.Size = new Size(91, 23);
             label8.TabIndex = 4;
-            label8.Text = "Khuyến Mãi";
+            label8.Text = "Đổi Điểm ";
+            label8.Click += label8_Click;
             // 
             // dateTime_taodd
             // 
-            dateTime_taodd.Location = new Point(852, 129);
+            dateTime_taodd.Location = new Point(813, 129);
             dateTime_taodd.Name = "dateTime_taodd";
             dateTime_taodd.Size = new Size(384, 30);
             dateTime_taodd.TabIndex = 3;
@@ -86,7 +89,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(687, 60);
+            label7.Location = new Point(648, 60);
             label7.Name = "label7";
             label7.Size = new Size(104, 23);
             label7.TabIndex = 0;
@@ -95,7 +98,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(687, 132);
+            label5.Location = new Point(648, 132);
             label5.Name = "label5";
             label5.Size = new Size(86, 23);
             label5.TabIndex = 0;
@@ -136,6 +139,7 @@
             txt_dd_sreach.PlaceholderText = "Tìm Kiếm ở Đây";
             txt_dd_sreach.Size = new Size(315, 41);
             txt_dd_sreach.TabIndex = 1;
+            txt_dd_sreach.TextChanged += txt_dd_sreach_TextChanged;
             // 
             // btn_close_doi
             // 
@@ -156,6 +160,7 @@
             clear_doi.Size = new Size(93, 77);
             clear_doi.TabIndex = 0;
             clear_doi.UseVisualStyleBackColor = true;
+            clear_doi.Click += clear_doi_Click;
             // 
             // btn_delete_doidiem
             // 
@@ -171,7 +176,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(631, 207);
+            label1.Location = new Point(592, 207);
             label1.Name = "label1";
             label1.Size = new Size(199, 23);
             label1.TabIndex = 0;
@@ -179,7 +184,7 @@
             // 
             // txt_diemcandoi
             // 
-            txt_diemcandoi.Location = new Point(852, 207);
+            txt_diemcandoi.Location = new Point(813, 207);
             txt_diemcandoi.Name = "txt_diemcandoi";
             txt_diemcandoi.Size = new Size(384, 30);
             txt_diemcandoi.TabIndex = 1;
@@ -214,6 +219,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.FromArgb(128, 255, 128);
             groupBox1.Controls.Add(txt_dd_sreach);
             groupBox1.Controls.Add(btn_close_doi);
             groupBox1.Controls.Add(clear_doi);
@@ -230,6 +236,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.FromArgb(128, 255, 128);
+            groupBox2.Controls.Add(pictureBox_doidiem);
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(dateTime_taodd);
             groupBox2.Controls.Add(comboBox_sdtkhdd);
@@ -253,6 +261,16 @@
             groupBox2.TabIndex = 14;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông Tin";
+            // 
+            // pictureBox_doidiem
+            // 
+            pictureBox_doidiem.BackgroundImage = (Image)resources.GetObject("pictureBox_doidiem.BackgroundImage");
+            pictureBox_doidiem.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox_doidiem.Location = new Point(1300, 111);
+            pictureBox_doidiem.Name = "pictureBox_doidiem";
+            pictureBox_doidiem.Size = new Size(80, 79);
+            pictureBox_doidiem.TabIndex = 7;
+            pictureBox_doidiem.TabStop = false;
             // 
             // comboBox_sdtkhdd
             // 
@@ -282,7 +300,7 @@
             // 
             // txt_mavoucherdd
             // 
-            txt_mavoucherdd.Location = new Point(852, 53);
+            txt_mavoucherdd.Location = new Point(813, 53);
             txt_mavoucherdd.Name = "txt_mavoucherdd";
             txt_mavoucherdd.Size = new Size(384, 30);
             txt_mavoucherdd.TabIndex = 1;
@@ -303,6 +321,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_doidiem).EndInit();
             ResumeLayout(false);
         }
 
@@ -331,5 +350,6 @@
         private Label label9;
         private TextBox txt_diemkhdd;
         private TextBox txt_mavoucherdd;
+        private PictureBox pictureBox_doidiem;
     }
 }

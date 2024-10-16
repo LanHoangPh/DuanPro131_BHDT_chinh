@@ -24,7 +24,7 @@ namespace PRL
 
         private void btn_close_vou_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void txt_km_sreach_TextChanged(object sender, EventArgs e)

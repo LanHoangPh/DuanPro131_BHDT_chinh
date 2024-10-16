@@ -21,9 +21,11 @@ namespace PRL
         KhachHangSver _khachHangSver;
         SanPhamSver _phamSver;
         SaleSver _saleSver;
+        VoucherSver _voucherSver;
         HoaDonSver _hdsver;
         ChiTietHoaDonSver _hiTietHoaDonSver;
         List<SanPham> _sanPhams;
+        List<HoaDon> _hoaDons;
         List<KhachHang> _khachHangs;
 
         public SanPhamfrm(Main parentForm)
@@ -32,10 +34,15 @@ namespace PRL
             _parentForm = parentForm;
             _phamSver = new SanPhamSver();
             _saleSver = new SaleSver();
+            _voucherSver = new VoucherSver();
             _hdsver = new HoaDonSver();
             _hiTietHoaDonSver = new ChiTietHoaDonSver();
             _khachHangSver = new KhachHangSver();
             InitializeComponent();
+        }
+        public void ReloadForm()
+        {
+            _parentForm.LoadSanPhamForm();
         }
 
         public Panel CreateSP(SaleSanPham sp)
@@ -155,6 +162,7 @@ namespace PRL
             long price = 0;
             int amount = 0;
             int currentStock = 0;
+            string ten = "";
 
             // Lấy thông tin của panel chứa SP
             Button btnMua = sender as Button;
@@ -195,6 +203,14 @@ namespace PRL
                     break;
                 }
             }
+            foreach (var item in labels)
+            {
+                if(item.Name == "lb_Name")
+                {
+                    ten = item.Text;
+                }
+            }
+
 
             // Kiểm tra nếu số lượng mua vượt quá số lượng hiện có
             if (amount > currentStock)
@@ -203,12 +219,7 @@ namespace PRL
                 return;
             }
             Guid productId = Guid.Parse(cpnSP.Name);
-            //Guid billId = Guid.Parse(lb_mahdvalue.Text);
-            //if (billId == null)
-            //{
-            //    MessageBox.Show("Vui lòng chọn mã hóa đơn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+           
             Guid billId;
             if (Guid.TryParse(lb_mahdvalue.Text, out billId))
             {
@@ -219,8 +230,6 @@ namespace PRL
                     return;
                 }
 
-                // Tiếp tục xử lý nếu mã hóa đơn hợp lệ
-                // ...
             }
             else
             {
@@ -229,7 +238,6 @@ namespace PRL
             _hiTietHoaDonSver = new ChiTietHoaDonSver();
             _hiTietHoaDonSver.AddToBill(billId, productId, price, amount);
             LoadHDCT(Guid.Parse(lb_mahdvalue.Text));
-            
         }
         public void LoadProductByPage(int page) // Load sản phẩm theo trang, mỗi trang 4 sp
         {
@@ -307,7 +315,7 @@ namespace PRL
         {
             LoadProductByPage(1);
             LoadPhone();
-            LoadVoucher();
+            
             LoadHinhThuc();
             LoadToDataGridview();
             ////
@@ -356,6 +364,7 @@ namespace PRL
                     DataGridViewRow row = datagr_hoadon.Rows[e.RowIndex];
                     lb_mahdvalue.Text = row.Cells[0].Value.ToString();
                     lb_tongtien.Text = row.Cells[1].Value.ToString();
+                    lb_tongtienmoi.Text=row.Cells[7].Value.ToString();// thêm dòng này nếu ko cần thì xóa phục vụ cho view
                     //txt_motasp.Text = row.Cells[2].Value.ToString();
                     if (row.Cells[3].Value != null && !string.IsNullOrEmpty(row.Cells[3].Value.ToString()))
                     {
@@ -393,20 +402,14 @@ namespace PRL
             if (selectedKhachHang != null)
             {
                 txt_tenkh.Text = selectedKhachHang.TenKhachHang + "-" + selectedKhachHang.SoDienThoai;
+                txt_phone.Text = selectedKhachHang.SoDienThoai;
+                LoadVoucher(txt_phone.Text);
             }
         }
 
         private void comboBox_phone_TextChanged(object sender, EventArgs e)
         {
-            if (comboBox_phone.SelectedIndex < 0) return;
 
-            var selectedPhone = comboBox_phone.SelectedValue.ToString();
-            var selectedKhachHang = _context.KhachHangs.FirstOrDefault(kh => kh.SoDienThoai == selectedPhone);
-
-            if (selectedKhachHang != null)
-            {
-                txt_tenkh.Text = selectedKhachHang.TenKhachHang + "-" + selectedKhachHang.SoDienThoai;
-            }
         }
 
         private void btn_addhd_Click(object sender, EventArgs e)
@@ -475,25 +478,25 @@ namespace PRL
             comboBox_phone.DisplayMember = "SoDienThoai";
             comboBox_phone.ValueMember = "SoDienThoai";
         }
-        private void LoadVoucher()
+        private void LoadVoucher(string customerPhoneNumber)
         {
             try
             {
-                var voucherList = _context.Vouchers
-                                          .Where(km => km.TrangThai == 1) // Lọc khuyến mãi có trạng thái hoạt động
-                                          .Select(km => new { km.MaVoucher, km.TenVoucher })
-                                          .ToList();
+                var voucherList = _voucherSver.GetVouchersByCustomerPhoneNumber(customerPhoneNumber)
+                                                  .Where(v => v.TrangThai == 1) // Lọc các voucher có trạng thái hoạt động
+                                                  .Select(v => new { v.MaVoucher, v.TenVoucher })
+                                                  .ToList();
 
                 if (voucherList.Any())
                 {
                     combobx_voucher.DataSource = voucherList;
-                    combobx_voucher.DisplayMember = "TenVoucher"; // Hiển thị tên khuyến mãi
-                    combobx_voucher.ValueMember = "MaVoucher"; // Giá trị là mã khuyến mãi
+                    combobx_voucher.DisplayMember = "TenVoucher"; // Hiển thị tên voucher
+                    combobx_voucher.ValueMember = "MaVoucher"; // Giá trị là mã voucher
                 }
                 else
                 {
                     combobx_voucher.DataSource = null;
-                    MessageBox.Show("Không có voucher nào hoạt động.");
+                    MessageBox.Show("Không có voucher nào hoạt động cho khách hàng này.");
                 }
             }
             catch (Exception ex)
@@ -503,21 +506,47 @@ namespace PRL
         }
         private void LoadToDataGridview()
         {
-            datagr_hoadon.Rows.Clear();
-            var allDatas = _hdsver.GetAllHoaDon().Where(hd => hd.TrangThai == 0).ToList();
-            datagr_hoadon.ColumnCount = 7;
-            datagr_hoadon.Columns[0].HeaderText = "Mã Hóa đơn";
-            datagr_hoadon.Columns[1].HeaderText = "Tổng Tiền";
-            datagr_hoadon.Columns[2].HeaderText = "Mã Tài Khoản";
-            datagr_hoadon.Columns[3].HeaderText = "Phone";
-            datagr_hoadon.Columns[4].HeaderText = "Ngày Tạo";
-            datagr_hoadon.Columns[5].HeaderText = "Trạng Thái";
-            datagr_hoadon.Columns[6].HeaderText = "Mã VouCher";
+            _hoaDons = _hdsver.GetAllHoaDon(); // Lấy ra tất cả hóa đơn
+            _voucherSver = new VoucherSver();
+            var vouchers = _voucherSver.GetAllVouchers(); // Lấy ra tất cả voucher
 
+            // Join để lấy data
+            var voucherhoadons =
+                from hoadon in _hoaDons
+                join voucher in vouchers
+                on hoadon.MaVoucher equals voucher.MaVoucher into hv
+                from voucher in hv.DefaultIfEmpty() // Đảm bảo join với tất cả hóa đơn, kể cả không có voucher
+                select new HoadonView
+                {
+                    Id = hoadon.MaHoaDon,
+                    TongTien = hoadon.TongTien,
+                    MaTaiKhoan = hoadon.MaTaiKhoan,
+                    SoDienThoaiKhachHang = hoadon.SoDienThoaiKhachHang,
+                    NgayTao = hoadon.NgayTao,
+                    TrangThai = hoadon.TrangThai,
+                    MaVoucher = hoadon.MaVoucher,
+                    TongTienMoi = voucher == null ? hoadon.TongTien :
+                                   Convert.ToInt64(hoadon.TongTien - (hoadon.TongTien * (voucher.GiaTriGiam / 100.0)))
+                };
+
+            datagr_hoadon.Rows.Clear();
+            var allDatas = voucherhoadons.ToList().Where(hd => hd.TrangThai == 0).ToList();
+            datagr_hoadon.ColumnCount = 8;
+            datagr_hoadon.Columns[0].Name = "MaHoaDon";
+            datagr_hoadon.Columns[1].Name = "TongTien";
+            datagr_hoadon.Columns[2].Name = "MaTaiKhoan";
+            datagr_hoadon.Columns[3].Name = "SoDienThoaiKhachHang";
+            datagr_hoadon.Columns[4].Name = "NgayTao";
+            datagr_hoadon.Columns[5].Name = "TrangThai";
+            datagr_hoadon.Columns[6].Name = "MaVoucher";
+            datagr_hoadon.Columns[7].Name = "TongTienMoi";
+
+            // Thêm dữ liệu
             foreach (var data in allDatas)
             {
-                datagr_hoadon.Rows.Add(data.MaHoaDon, data.TongTien, data.MaTaiKhoan, data.SoDienThoaiKhachHang, data.NgayTao, data.TrangThai, data.MaVoucher);
+                datagr_hoadon.Rows.Add(data.Id, data.TongTien, data.MaTaiKhoan, data.SoDienThoaiKhachHang, data.NgayTao, data.TrangThai, data.MaVoucher, data.TongTienMoi);
             }
+ 
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -581,7 +610,8 @@ namespace PRL
 
                     MessageBox.Show("Cập nhật tổng số tiền thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadHDCT(billID);
-                    this.Refresh(); 
+                    LoadToDataGridview();
+                    ReloadForm();
                 }
                 else
                 {
@@ -621,6 +651,7 @@ namespace PRL
                         _hiTietHoaDonSver.HoanlaItongtien(billDetailID, billID, productID);
                         LoadProductByPage(1);
                         LoadToDataGridview();
+                        ReloadForm();
                     }
                     else
                     {
@@ -664,7 +695,7 @@ namespace PRL
                     return;
                 }
 
-                var totalAmount = hoaDon.TongTien;
+                var totalAmount = (long)datagr_hoadon.SelectedRows[0].Cells["TongTienMoi"].Value;
                 if (amountPaid < totalAmount)
                 {
                     MessageBox.Show("Số tiền thanh toán không đủ.");
@@ -682,7 +713,7 @@ namespace PRL
                 var statusUpdateResult = _hdsver.UpdateHoaDonStatus(maHoaDon, 1);
 
                 // Cập nhật số lượng sản phẩm và xóa chi tiết hóa đơn
-                var thanhToanResult = _hiTietHoaDonSver.ThanhToanHoaDon(maHoaDon, amountPaid);
+                var thanhToanResult = _hiTietHoaDonSver.ThanhToanHoaDon(maHoaDon, amountPaid, totalAmount);
 
                 if (thanhToanResult == "Thanh toán thành công.")
                 {
@@ -721,5 +752,6 @@ namespace PRL
                 MessageBox.Show($"Lỗi khi tải hình thức: {ex.Message}");
             }
         }
+        
     }
 }

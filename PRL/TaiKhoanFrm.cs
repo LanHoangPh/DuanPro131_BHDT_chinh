@@ -50,6 +50,7 @@ namespace PRL
 
         private void btn_update_tk_Click(object sender, EventArgs e)
         {
+
             string username = txt_tentk.Text;
             string password = txt_mk.Text;
             int role = comboBox_role.SelectedIndex; // Selected index mặc định là -1

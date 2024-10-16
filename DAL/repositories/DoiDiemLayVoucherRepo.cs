@@ -122,7 +122,6 @@ namespace DAL.repositories
             // Cập nhật điểm tích lũy
             sodiemmoi = khachHang.DiemTichLuy -soDiemdoi;
 
-            // Lưu thay đổi vào cơ sở dữ liệu
             _context.SaveChanges();
 
             return $"Cập nhật điểm tích lũy thành công. Điểm tích lũy mới của khách hàng là {sodiemmoi}.";

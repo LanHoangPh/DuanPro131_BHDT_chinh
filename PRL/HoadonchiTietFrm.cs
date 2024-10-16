@@ -75,5 +75,9 @@ namespace PRL
         {
             this.Close();
         }
+        public void Clear()
+        {
+
+        }
     }
 }

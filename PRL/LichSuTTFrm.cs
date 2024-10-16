@@ -27,7 +27,7 @@ namespace PRL
         private void btn_delete_lstt_Click(object sender, EventArgs e)
         {
             Guid id = Guid.Parse(txt_malstt.Text);
-            if(id == null)
+            if (id == null)
             {
                 MessageBox.Show("Vui lòng chọn hóa đơn để xóa", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -39,9 +39,16 @@ namespace PRL
 
         private void clear_lstt_Click(object sender, EventArgs e)
         {
-
+            clear();
         }
-
+        public void clear()
+        {
+            txt_ghichu_ls.Text = "";
+            txt_mahdf.Text = "";
+            txt_mahtf.Text = "";
+            txt_sotien_ls.Text = "";
+            txt_malstt.Text = "";
+        }
         private void btn_close_lstt_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -66,11 +73,11 @@ namespace PRL
                     txt_malstt.Text = lichSuThanhToan.MaLichSu.ToString();
                     txt_mahdf.Text = lichSuThanhToan.MaHoaDon.ToString();
                     txt_mahtf.Text = lichSuThanhToan.MaHinhThuc.ToString();
-                    string sotiendathanhtoan = $"Số tiền khách đã thanh toán: { hoadontongtien.TongTien}";
+                    string sotiendathanhtoan = $"Số tiền khách đã thanh toán: {hoadontongtien.TongTien}";
                     txt_sotien_ls.Text = sotiendathanhtoan;
 
                     // Tạo chuỗi ghi chú với thông tin đầy đủ
-                    
+
                     string ghiChu = $"Số tiền khách đưa: {lichSuThanhToan.SoTien}, Số tiền cần trả: {lichSuThanhToan.SoTien - hoadontongtien.TongTien}";
                     txt_ghichu_ls.Text = ghiChu;
                 }
@@ -157,5 +164,6 @@ namespace PRL
                 }
             }
         }
+
     }
 }

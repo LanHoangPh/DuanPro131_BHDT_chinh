@@ -60,15 +60,15 @@ namespace PRL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string sdt = txt_sdt.Text.Trim();
-            string tenkh = txt_tenkh.Text.Trim();
+            string sdt = txt_sdt.Text;
+            string tenkh = txt_tenkh.Text;
             int diemtichluy;
             if (string.IsNullOrEmpty(txt_sdt.Text) || string.IsNullOrEmpty(txt_tenkh.Text))
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!int.TryParse(txt_diemtichluy.Text.Trim(), out diemtichluy))
+            if (!int.TryParse(txt_diemtichluy.Text, out diemtichluy ))
             {
                 MessageBox.Show("Điểm tích lũy phải là số nguyên.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

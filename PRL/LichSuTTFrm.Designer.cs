@@ -34,7 +34,6 @@
             label7 = new Label();
             label4 = new Label();
             label3 = new Label();
-            txt_lstt_sreach = new TextBox();
             btn_close_lstt = new Button();
             clear_lstt = new Button();
             btn_delete_lstt = new Button();
@@ -46,11 +45,13 @@
             groupBox1 = new GroupBox();
             btn_xuatexcells = new Button();
             groupBox2 = new GroupBox();
+            pictureBox_lstt = new PictureBox();
             txt_mahdf = new TextBox();
             txt_mahtf = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView_lstt).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_lstt).BeginInit();
             SuspendLayout();
             // 
             // dataGridView_lstt
@@ -66,7 +67,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(1284, 20);
+            label8.Location = new Point(1238, 26);
             label8.Name = "label8";
             label8.Size = new Size(164, 23);
             label8.TabIndex = 4;
@@ -75,7 +76,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(681, 124);
+            label7.Location = new Point(598, 122);
             label7.Name = "label7";
             label7.Size = new Size(73, 23);
             label7.TabIndex = 0;
@@ -84,7 +85,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(70, 218);
+            label4.Location = new Point(34, 218);
             label4.Name = "label4";
             label4.Size = new Size(111, 23);
             label4.TabIndex = 0;
@@ -93,21 +94,11 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(63, 133);
+            label3.Location = new Point(34, 133);
             label3.Name = "label3";
             label3.Size = new Size(122, 23);
             label3.TabIndex = 0;
             label3.Text = "Mã Hình Thức";
-            // 
-            // txt_lstt_sreach
-            // 
-            txt_lstt_sreach.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_lstt_sreach.Location = new Point(12, 241);
-            txt_lstt_sreach.Multiline = true;
-            txt_lstt_sreach.Name = "txt_lstt_sreach";
-            txt_lstt_sreach.PlaceholderText = "Tìm Kiếm ở Đây";
-            txt_lstt_sreach.Size = new Size(315, 41);
-            txt_lstt_sreach.TabIndex = 1;
             // 
             // btn_close_lstt
             // 
@@ -145,7 +136,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(681, 53);
+            label1.Location = new Point(598, 51);
             label1.Name = "label1";
             label1.Size = new Size(192, 23);
             label1.TabIndex = 0;
@@ -153,14 +144,14 @@
             // 
             // txt_sotien_ls
             // 
-            txt_sotien_ls.Location = new Point(877, 46);
+            txt_sotien_ls.Location = new Point(798, 46);
             txt_sotien_ls.Name = "txt_sotien_ls";
             txt_sotien_ls.Size = new Size(384, 30);
             txt_sotien_ls.TabIndex = 1;
             // 
             // txt_ghichu_ls
             // 
-            txt_ghichu_ls.Location = new Point(877, 117);
+            txt_ghichu_ls.Location = new Point(798, 117);
             txt_ghichu_ls.Multiline = true;
             txt_ghichu_ls.Name = "txt_ghichu_ls";
             txt_ghichu_ls.Size = new Size(384, 100);
@@ -168,7 +159,7 @@
             // 
             // txt_malstt
             // 
-            txt_malstt.Location = new Point(190, 50);
+            txt_malstt.Location = new Point(163, 50);
             txt_malstt.Name = "txt_malstt";
             txt_malstt.ReadOnly = true;
             txt_malstt.Size = new Size(384, 30);
@@ -177,7 +168,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(63, 54);
+            label2.Location = new Point(34, 54);
             label2.Name = "label2";
             label2.Size = new Size(98, 23);
             label2.TabIndex = 0;
@@ -185,8 +176,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.FromArgb(128, 255, 128);
             groupBox1.Controls.Add(btn_xuatexcells);
-            groupBox1.Controls.Add(txt_lstt_sreach);
             groupBox1.Controls.Add(btn_close_lstt);
             groupBox1.Controls.Add(clear_lstt);
             groupBox1.Controls.Add(btn_delete_lstt);
@@ -212,6 +203,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.FromArgb(128, 255, 128);
+            groupBox2.Controls.Add(pictureBox_lstt);
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(label4);
@@ -232,9 +225,19 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông Tin";
             // 
+            // pictureBox_lstt
+            // 
+            pictureBox_lstt.BackgroundImage = (Image)resources.GetObject("pictureBox_lstt.BackgroundImage");
+            pictureBox_lstt.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox_lstt.Location = new Point(1276, 99);
+            pictureBox_lstt.Name = "pictureBox_lstt";
+            pictureBox_lstt.Size = new Size(80, 79);
+            pictureBox_lstt.TabIndex = 7;
+            pictureBox_lstt.TabStop = false;
+            // 
             // txt_mahdf
             // 
-            txt_mahdf.Location = new Point(190, 210);
+            txt_mahdf.Location = new Point(163, 210);
             txt_mahdf.Name = "txt_mahdf";
             txt_mahdf.ReadOnly = true;
             txt_mahdf.Size = new Size(384, 30);
@@ -242,7 +245,7 @@
             // 
             // txt_mahtf
             // 
-            txt_mahtf.Location = new Point(190, 129);
+            txt_mahtf.Location = new Point(163, 129);
             txt_mahtf.Name = "txt_mahtf";
             txt_mahtf.ReadOnly = true;
             txt_mahtf.Size = new Size(384, 30);
@@ -261,9 +264,9 @@
             Load += LichSuTTFrm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView_lstt).EndInit();
             groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_lstt).EndInit();
             ResumeLayout(false);
         }
 
@@ -274,7 +277,6 @@
         private Label label7;
         private Label label4;
         private Label label3;
-        private TextBox txt_lstt_sreach;
         private Button btn_close_lstt;
         private Button clear_lstt;
         private Button btn_delete_lstt;
@@ -288,5 +290,6 @@
         private Button btn_xuatexcells;
         private TextBox txt_mahdf;
         private TextBox txt_mahtf;
+        private PictureBox pictureBox_lstt;
     }
 }

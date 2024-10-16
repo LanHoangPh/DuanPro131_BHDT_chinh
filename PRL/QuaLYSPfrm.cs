@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PRL
 {
@@ -79,34 +80,12 @@ namespace PRL
 
         private void btn_add_sp_Click(object sender, EventArgs e)
         {
-            SanPham sanpham = new SanPham()
-            {
-                MaSanPham = Guid.NewGuid(),
-                TenSanPham = txt_tensp.Text,
-                XuatXu = txt_xuatxusp.Text,
-                MoTaSanPham = txt_motasp.Text,
-                Gia = Convert.ToInt64(txt_giasp.Text),
-                SoLuongCon = Convert.ToInt32(txt_soluongconsp.Text),
-                TrangThai = combox_trangthai.SelectedIndex,
-                HinhAnh = ptb_hinhanhsp.ImageLocation,
-                MaKhuyenMai = (Guid)combox_makm.SelectedValue,
-            };
-            MessageBox.Show(phamSver.CreateSp(sanpham));
-            LoadDataToGridView();
-        }
-
-        private void btn_update_sp_Click(object sender, EventArgs e)
-        {
-            Guid id = Guid.Parse(txt_masp.Text);
-            if (id == null)
-            {
-                MessageBox.Show("Bạn cần chọn sản phẩm cần sửa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else 
+            DialogResult result = MessageBox.Show("Bạn muốn thêm chứ?", "Thêm tài khoản", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
                 SanPham sanpham = new SanPham()
                 {
-                    MaSanPham = id,
+                    MaSanPham = Guid.NewGuid(),
                     TenSanPham = txt_tensp.Text,
                     XuatXu = txt_xuatxusp.Text,
                     MoTaSanPham = txt_motasp.Text,
@@ -114,21 +93,66 @@ namespace PRL
                     SoLuongCon = Convert.ToInt32(txt_soluongconsp.Text),
                     TrangThai = combox_trangthai.SelectedIndex,
                     HinhAnh = ptb_hinhanhsp.ImageLocation,
-                    MaKhuyenMai = (Guid)combox_makm.SelectedValue // cập nhật mã khuyến mãi
+                    MaKhuyenMai = (Guid)combox_makm.SelectedValue,
                 };
-                string result = phamSver.UpdateSP(sanpham, id);
-                MessageBox.Show(result);
+                MessageBox.Show(phamSver.CreateSp(sanpham));
                 LoadDataToGridView();
+            }
+            
+        }
+
+        private void btn_update_sp_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show(
+               "Bạn có chắc chắn muốn cập nhật sản phẩm không?",
+               "Xác nhận ",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question);
+            if (confirmResult == DialogResult.Yes)
+            { 
+                Guid id = Guid.Parse(txt_masp.Text);
+                if (id == null)
+                {
+                    MessageBox.Show("Bạn cần chọn sản phẩm cần sửa", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    SanPham sanpham = new SanPham()
+                    {
+                        MaSanPham = id,
+                        TenSanPham = txt_tensp.Text,
+                        XuatXu = txt_xuatxusp.Text,
+                        MoTaSanPham = txt_motasp.Text,
+                        Gia = Convert.ToInt64(txt_giasp.Text),
+                        SoLuongCon = Convert.ToInt32(txt_soluongconsp.Text),
+                        TrangThai = combox_trangthai.SelectedIndex,
+                        HinhAnh = ptb_hinhanhsp.ImageLocation,
+                        MaKhuyenMai = (Guid)combox_makm.SelectedValue // cập nhật mã khuyến mãi
+                    };
+                    string result = phamSver.UpdateSP(sanpham, id);
+                    MessageBox.Show(result);
+                    LoadDataToGridView();
+                }
+                
             }
             
         }
 
         private void btn_delete_sp_Click(object sender, EventArgs e)
         {
-            Guid id = Guid.Parse(txt_masp.Text);
-            string reslut = phamSver.DeleteSp(id);
-            MessageBox.Show(reslut);
-            LoadDataToGridView();
+            var confirmResult = MessageBox.Show(
+               "Bạn có chắc chắn muốn cập nhật thông tin không?",
+               "Xác nhận ",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question);
+            if (confirmResult == DialogResult.Yes)
+            {
+                Guid id = Guid.Parse(txt_masp.Text);
+                string reslut = phamSver.DeleteSp(id);
+                MessageBox.Show(reslut);
+                LoadDataToGridView();
+            }
+           
 
         }
 

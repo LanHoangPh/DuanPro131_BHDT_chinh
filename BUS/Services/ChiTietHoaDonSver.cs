@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,43 +25,43 @@ namespace BUS.Services
             return _context.ChiTietHoaDons.Where(p => p.MaHoaDon == idhdct).ToList();
         }
 
-        public string AddToBill(Guid billID, Guid productID, long price, int amount)
+        public string AddToBill(Guid hoadonID, Guid sanphamID, long gia  , int soluong)
         {
             try
             {
-                var check = _context.ChiTietHoaDons.FirstOrDefault(p => p.MaHoaDon == billID && p.MaSanPham == productID);
+                var check = _context.ChiTietHoaDons.FirstOrDefault(p => p.MaHoaDon == hoadonID && p.MaSanPham == sanphamID);
 
                 if (check == null) // SP mới chưa có trong hóa đơn
                 {
-                    var details = new ChiTietHoaDon
+                    var hoadon = new ChiTietHoaDon
                     {
                         MaChiTiet = Guid.NewGuid(),
-                        MaHoaDon = billID,
-                        MaSanPham = productID,
-                        GiaSanPham = price,
-                        SoLuong = amount
+                        MaHoaDon = hoadonID,
+                        MaSanPham = sanphamID,
+                        GiaSanPham = gia,
+                        SoLuong = soluong
                     };
-                    _context.ChiTietHoaDons.Add(details);
+                    _context.ChiTietHoaDons.Add(hoadon);
                     _context.SaveChanges();
 
                     // Update số lượng của sản phẩm trong kho
-                    var product = _context.SanPhams.Find(productID);
-                    product.SoLuongCon = product.SoLuongCon - amount;
-                    _context.SanPhams.Update(product);
+                    var sapham = _context.SanPhams.Find(sanphamID);
+                    sapham.SoLuongCon = sapham.SoLuongCon - soluong;
+                    _context.SanPhams.Update(sapham);
                     _context.SaveChanges();
 
                     return "Thêm thành công vào hóa đơn";
                 }
                 else // SP đã có trong hóa đơn rồi => Update số lượng
                 {
-                    check.SoLuong += amount; // update số lượng trong bill Details
+                    check.SoLuong += soluong; // update số lượng trong bill Details
                     _context.ChiTietHoaDons.Update(check);
                     _context.SaveChanges();
 
                     // Update số lượng của sản phẩm trong kho
-                    var product = _context.SanPhams.Find(productID);
-                    product.SoLuongCon -= amount;
-                    _context.SanPhams.Update(product);
+                    var sapham = _context.SanPhams.Find(sanphamID);
+                    sapham.SoLuongCon -= soluong;
+                    _context.SanPhams.Update(sapham);
                     _context.SaveChanges();
 
                     return "Thêm mới và cộng dồn thành công";
@@ -74,27 +75,6 @@ namespace BUS.Services
             
         }
 
-        public string UpdateBillDetail(Guid detailID, long price, int amount)
-        {
-            var detail = _context.ChiTietHoaDons.Find(detailID);
-            if (detail != null)
-            {
-                var originalAmount = detail.SoLuong;
-                detail.GiaSanPham = price;
-                detail.SoLuong = amount;
-                _context.ChiTietHoaDons.Update(detail);
-                _context.SaveChanges();
-
-                // Update số lượng của sản phẩm trong kho
-                var product = _context.SanPhams.Find(detail.MaSanPham);
-                product.SoLuongCon += originalAmount - amount;
-                _context.SanPhams.Update(product);
-                _context.SaveChanges();
-
-                return "Cập nhật thành công";
-            }
-            return "Chi tiết hóa đơn không tồn tại";
-        }
         public void UpdateTotalAmount(Guid billID)
         {
             var details = _context.ChiTietHoaDons.Where(cthd => cthd.MaHoaDon == billID).ToList();
@@ -103,17 +83,6 @@ namespace BUS.Services
             var bill = _context.HoaDons.Find(billID);
             if (bill != null)
             {
-                // Kiểm tra và áp dụng giảm giá từ voucher
-                if (!string.IsNullOrEmpty(bill.MaVoucher))
-                {
-                    var voucher = _context.Vouchers.FirstOrDefault(v => v.MaVoucher == bill.MaVoucher);
-                    if (voucher != null && voucher.GiaTriGiam > 0)
-                    {
-                        long soTienGiam = totalAmount * voucher.GiaTriGiam / 100;
-                        totalAmount = totalAmount - soTienGiam;
-                    }
-                }
-
                 bill.TongTien = totalAmount;
                 _context.HoaDons.Update(bill);
                 _context.SaveChanges();
@@ -121,31 +90,38 @@ namespace BUS.Services
         }
         public string RefundProduct(Guid machitiet, Guid masanpham)
         {
-
-            var billDetail = _context.ChiTietHoaDons.Find(machitiet);
-            if (billDetail == null)
+            try
             {
-                return "Chi tiết hóa đơn không tồn tại.";
+                var billDetail = _context.ChiTietHoaDons.Find(machitiet);
+                if (billDetail == null)
+                {
+                    return "Chi tiết hóa đơn không tồn tại.";
+                }
+
+
+                var product = _context.SanPhams.Find(masanpham);
+                if (product == null)
+                {
+                    return "Sản phẩm không tồn tại.";
+                }
+
+                product.SoLuongCon += billDetail.SoLuong;
+
+                _context.ChiTietHoaDons.Remove(billDetail);
+
+                _context.SaveChanges();
+
+                return "Hoàn trả sản phẩm thành công.";
             }
-
-
-            var product = _context.SanPhams.Find(masanpham);
-            if (product == null)
+            catch (Exception ex)
             {
-                return "Sản phẩm không tồn tại.";
+                return "Thất Bại" + ex.Message;
             }
-
-            product.SoLuongCon += billDetail.SoLuong;
-
-            _context.ChiTietHoaDons.Remove(billDetail);
-
-            // Lưu thay đổi vào cơ sở dữ liệu
-            _context.SaveChanges();
-
-            return "Hoàn trả sản phẩm thành công.";
+            
         }
         public string HoanlaItongtien(Guid machitiet, Guid mahoadon, Guid masanpham)
         {
+
             var gia = _context.SanPhams.Find(masanpham);
             if (gia == null)
             {
@@ -168,9 +144,9 @@ namespace BUS.Services
         }
 
 
-        public string DeleteBillDetail(Guid detailID)
+        public string DeleteBillDetail(Guid hoadonchitiet)
         {
-            var detail = _context.ChiTietHoaDons.Find(detailID);
+            var detail = _context.ChiTietHoaDons.Find(hoadonchitiet);
             if (detail != null)
             {
                 var product = _context.SanPhams.Find(detail.MaSanPham);
@@ -186,34 +162,61 @@ namespace BUS.Services
             }
             return "Chi tiết hóa đơn không tồn tại";
         }
-        public string ThanhToanHoaDon(Guid hoaDonId, long soTienKhachTra)
-        { 
-               var hoaDon = _context.HoaDons.Find(hoaDonId);
-                if (hoaDon == null)
-                {
-                    return "Hóa đơn không tồn tại.";
-                }
+        public string ThanhToanHoaDon(Guid hoaDonId, long soTienKhachTra, long tongTienMoi)
+        {
+            //var hoaDon = _context.HoaDons.Find(hoaDonId);
+            // if (hoaDon == null)
+            // {
+            //     return "Hóa đơn không tồn tại.";
+            // }
 
-                var chiTietHoaDons = _context.ChiTietHoaDons.Where(ct => ct.MaHoaDon == hoaDonId).ToList();
-                if (!chiTietHoaDons.Any())
-                {
-                    return "Không có chi tiết hóa đơn để thanh toán.";
-                }
+            // var chiTietHoaDons = _context.ChiTietHoaDons.Where(ct => ct.MaHoaDon == hoaDonId).ToList();
+            // if (!chiTietHoaDons.Any())
+            // {
+            //     return "Không có chi tiết hóa đơn để thanh toán.";
+            // }
 
-                hoaDon.TongTien = chiTietHoaDons.Sum(ct => ct.GiaSanPham * ct.SoLuong);
-                if (soTienKhachTra < hoaDon.TongTien)
-                {
-                    return "Số tiền khách trả không đủ để thanh toán hóa đơn.";
-                }
+            // hoaDon.TongTien = chiTietHoaDons.Sum(ct => ct.GiaSanPham * ct.SoLuong);
+            // if (soTienKhachTra < hoaDon.TongTien)
+            // {
+            //     return "Số tiền khách trả không đủ để thanh toán hóa đơn.";
+            // }
 
-                hoaDon.TrangThai = 1;
-                _context.HoaDons.Update(hoaDon);
+            // hoaDon.TrangThai = 1;
+            // _context.HoaDons.Update(hoaDon);
 
-                _context.ChiTietHoaDons.RemoveRange(chiTietHoaDons); // Xóa tất cả chi tiết hóa đơn liên quan
-                _context.SaveChanges();
+            // _context.ChiTietHoaDons.RemoveRange(chiTietHoaDons); // Xóa tất cả chi tiết hóa đơn liên quan
+            // _context.SaveChanges();
 
-                return "Thanh toán thành công.";
-            
+            // return "Thanh toán thành công.";
+            var hoaDon = _context.HoaDons.Find(hoaDonId);
+            if (hoaDon == null)
+            {
+                return "Hóa đơn không tồn tại.";
+            }
+
+            var chiTietHoaDons = _context.ChiTietHoaDons.Where(ct => ct.MaHoaDon == hoaDonId).ToList();
+            if (!chiTietHoaDons.Any())
+            {
+                return "Không có chi tiết hóa đơn để thanh toán.";
+            }
+
+            // Cập nhật tổng tiền mới từ lb_tongtienmoi
+            hoaDon.TongTien = tongTienMoi;
+
+            if (soTienKhachTra < hoaDon.TongTien)
+            {
+                return "Số tiền khách trả không đủ để thanh toán hóa đơn.";
+            }
+
+            hoaDon.TrangThai = 1; // Đánh dấu hóa đơn đã thanh toán
+            _context.HoaDons.Update(hoaDon);
+
+            _context.ChiTietHoaDons.RemoveRange(chiTietHoaDons); // Xóa tất cả chi tiết hóa đơn liên quan
+            _context.SaveChanges();
+
+            return "Thanh toán thành công.";
+
         }
     } 
 }

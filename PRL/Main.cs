@@ -18,6 +18,28 @@ namespace PRL
             InitializeComponent();
             this.accountInfor = accountInfo;
         }
+        public void LoadSanPhamForm()
+        {
+            // Tạo instance của SanPhamfrm và truyền tham chiếu đến MainForm nếu cần
+            SanPhamfrm sanPhamfrm = new SanPhamfrm(this);
+
+            // Hiển thị form SanPhamfrm trong panel_mainshow
+            LoadFormIntoPanel(sanPhamfrm);
+        }
+        private void LoadFormIntoPanel(Form form)
+        {
+            // Dọn dẹp panel trước khi thêm form mới
+            panel_mainshow.Controls.Clear();
+
+            // Thiết lập form con
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            form.FormBorderStyle = FormBorderStyle.None;
+
+            // Thêm form con vào panel
+            panel_mainshow.Controls.Add(form);
+            form.Show();
+        }
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -129,12 +151,13 @@ namespace PRL
 
         private void btn_xemsp_Click(object sender, EventArgs e)
         {
-            panel_mainshow.Controls.Clear();
-            SanPhamfrm sanPhamfrm = new SanPhamfrm(this); // cái này cần truyền tham số gì 
-            sanPhamfrm.TopLevel = false;
-            panel_mainshow.Controls.Add(sanPhamfrm);
-            sanPhamfrm.Show();
-            sanPhamfrm.FormBorderStyle = FormBorderStyle.None;
+            //panel_mainshow.Controls.Clear();
+            //SanPhamfrm sanPhamfrm = new SanPhamfrm(this); // cái này cần truyền tham số gì 
+            //sanPhamfrm.TopLevel = false;
+            //panel_mainshow.Controls.Add(sanPhamfrm);
+            //sanPhamfrm.Show();
+            //sanPhamfrm.FormBorderStyle = FormBorderStyle.None;
+            LoadSanPhamForm();
         }
 
         private void button3_Click(object sender, EventArgs e)

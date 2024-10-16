@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HinhThucTTFrm));
             groupBox1 = new GroupBox();
-            txt_httt_sreach = new TextBox();
             btn_close_httt = new Button();
             clear_httt = new Button();
             btn_delete_httt = new Button();
@@ -39,6 +39,7 @@
             txt_malhttt = new TextBox();
             label2 = new Label();
             groupBox2 = new GroupBox();
+            pictureBox_httt = new PictureBox();
             label8 = new Label();
             comboBox_trangthaihttt = new ComboBox();
             label4 = new Label();
@@ -46,12 +47,13 @@
             dataGridView_httt = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_httt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_httt).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(txt_httt_sreach);
+            groupBox1.BackColor = Color.FromArgb(128, 255, 128);
             groupBox1.Controls.Add(btn_close_httt);
             groupBox1.Controls.Add(clear_httt);
             groupBox1.Controls.Add(btn_delete_httt);
@@ -66,21 +68,11 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Chức Năng";
             // 
-            // txt_httt_sreach
-            // 
-            txt_httt_sreach.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_httt_sreach.Location = new Point(6, 317);
-            txt_httt_sreach.Multiline = true;
-            txt_httt_sreach.Name = "txt_httt_sreach";
-            txt_httt_sreach.PlaceholderText = "Tìm Kiếm ở Đây";
-            txt_httt_sreach.Size = new Size(315, 41);
-            txt_httt_sreach.TabIndex = 1;
-            // 
             // btn_close_httt
             // 
             btn_close_httt.BackgroundImage = Properties.Resources.close;
             btn_close_httt.BackgroundImageLayout = ImageLayout.Zoom;
-            btn_close_httt.Location = new Point(95, 422);
+            btn_close_httt.Location = new Point(97, 299);
             btn_close_httt.Name = "btn_close_httt";
             btn_close_httt.Size = new Size(145, 51);
             btn_close_httt.TabIndex = 0;
@@ -149,7 +141,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(529, 62);
+            label2.Location = new Point(515, 64);
             label2.Name = "label2";
             label2.Size = new Size(122, 23);
             label2.TabIndex = 0;
@@ -157,6 +149,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.FromArgb(128, 255, 128);
+            groupBox2.Controls.Add(pictureBox_httt);
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(comboBox_trangthaihttt);
             groupBox2.Controls.Add(label4);
@@ -173,10 +167,20 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông Tin";
             // 
+            // pictureBox_httt
+            // 
+            pictureBox_httt.BackgroundImage = (Image)resources.GetObject("pictureBox_httt.BackgroundImage");
+            pictureBox_httt.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox_httt.Location = new Point(1258, 118);
+            pictureBox_httt.Name = "pictureBox_httt";
+            pictureBox_httt.Size = new Size(80, 79);
+            pictureBox_httt.TabIndex = 7;
+            pictureBox_httt.TabStop = false;
+            // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(1285, 23);
+            label8.Location = new Point(1200, 26);
             label8.Name = "label8";
             label8.Size = new Size(188, 23);
             label8.TabIndex = 4;
@@ -194,7 +198,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(536, 226);
+            label4.Location = new Point(522, 228);
             label4.Name = "label4";
             label4.Size = new Size(95, 23);
             label4.TabIndex = 0;
@@ -203,7 +207,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(529, 141);
+            label3.Location = new Point(515, 143);
             label3.Name = "label3";
             label3.Size = new Size(129, 23);
             label3.TabIndex = 0;
@@ -231,16 +235,15 @@
             Text = "HinhThucTTFrm";
             Load += HinhThucTTFrm_Load;
             groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_httt).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_httt).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
         private GroupBox groupBox1;
-        private TextBox txt_httt_sreach;
         private Button btn_close_httt;
         private Button clear_httt;
         private Button btn_delete_httt;
@@ -255,5 +258,6 @@
         private Label label4;
         private Label label3;
         private DataGridView dataGridView_httt;
+        private PictureBox pictureBox_httt;
     }
 }

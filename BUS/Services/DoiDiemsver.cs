@@ -1,5 +1,6 @@
 ﻿using DAL.Models;
 using DAL.repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,11 @@ namespace BUS.Services
     public class DoiDiemsver
     {
         DoiDiemLayVoucherRepo _repo;
+        Pro131BhdtContext _context;
         public DoiDiemsver()
         {
             _repo = new DoiDiemLayVoucherRepo();
+            _context = new Pro131BhdtContext();
         }
         public List<DoiDiemLayVoucher> GetAllDoiDiem()
         {
@@ -36,5 +39,6 @@ namespace BUS.Services
         {
             return _repo.DeleteĐoiiem(id);
         }
+       
     }
 }

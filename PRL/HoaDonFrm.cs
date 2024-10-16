@@ -79,7 +79,7 @@ namespace PRL
             string searchValue = txt_lstt_sreach.Text.ToLower();
             var allDatas = _donSver.GetAllHoaDon();
 
-            var filteredData = allDatas.Where(kh => kh.MaTaiKhoan.ToLower().Contains(searchValue)).ToList();
+            var filteredData = allDatas.Where(kh => kh.SoDienThoaiKhachHang.ToLower().Contains(searchValue)).ToList();
             dataGridView_hoadonf.Rows.Clear();
             foreach (var data in allDatas)
             {
@@ -142,6 +142,25 @@ namespace PRL
                     MessageBox.Show("Xuất dữ liệu thành công và mở file Excel!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
+
+        private void clear_hd_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+        public void Clear()
+        {
+            txt_mahdf.Text = "";
+            txt_matkf.Text = "";
+            txt_sdtf.Text = "";
+            txt_tongtienf.Text = "";
+            comboBox_trangthaif.SelectedIndex = -1;
+            comboBox_voucher.SelectedIndex = -1;
+        }
+
+        private void txt_mahdf_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

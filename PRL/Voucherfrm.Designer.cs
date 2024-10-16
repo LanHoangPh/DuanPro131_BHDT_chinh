@@ -50,15 +50,18 @@
             label6 = new Label();
             txt_giatrigiam = new TextBox();
             txt_tenvou = new TextBox();
+            label8 = new Label();
+            pictureBox_voucher = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView_mavou).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_voucher).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(681, 53);
+            label1.Location = new Point(592, 48);
             label1.Name = "label1";
             label1.Size = new Size(109, 23);
             label1.TabIndex = 0;
@@ -67,7 +70,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(66, 50);
+            label2.Location = new Point(30, 50);
             label2.Name = "label2";
             label2.Size = new Size(104, 23);
             label2.TabIndex = 0;
@@ -120,7 +123,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(66, 199);
+            label4.Location = new Point(30, 199);
             label4.Name = "label4";
             label4.Size = new Size(57, 23);
             label4.TabIndex = 0;
@@ -129,7 +132,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(66, 121);
+            label3.Location = new Point(30, 121);
             label3.Name = "label3";
             label3.Size = new Size(106, 23);
             label3.TabIndex = 0;
@@ -137,7 +140,7 @@
             // 
             // txt_motavou
             // 
-            txt_motavou.Location = new Point(190, 196);
+            txt_motavou.Location = new Point(154, 196);
             txt_motavou.Name = "txt_motavou";
             txt_motavou.ReadOnly = true;
             txt_motavou.Size = new Size(384, 30);
@@ -166,7 +169,7 @@
             // 
             // txt_mavou
             // 
-            txt_mavou.Location = new Point(190, 50);
+            txt_mavou.Location = new Point(154, 50);
             txt_mavou.Name = "txt_mavou";
             txt_mavou.ReadOnly = true;
             txt_mavou.Size = new Size(384, 30);
@@ -174,6 +177,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.FromArgb(128, 255, 128);
             groupBox1.Controls.Add(txt_vou_sreach);
             groupBox1.Controls.Add(btn_close_vou);
             groupBox1.Controls.Add(clear_vou);
@@ -192,13 +196,16 @@
             // 
             comboBox_trthai.FormattingEnabled = true;
             comboBox_trthai.Items.AddRange(new object[] { "Không Hoạt Động", "Hoạt Động" });
-            comboBox_trthai.Location = new Point(852, 264);
+            comboBox_trthai.Location = new Point(753, 260);
             comboBox_trthai.Name = "comboBox_trthai";
             comboBox_trthai.Size = new Size(384, 31);
             comboBox_trthai.TabIndex = 2;
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.FromArgb(128, 255, 128);
+            groupBox2.Controls.Add(pictureBox_voucher);
+            groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(dateTime_endtime);
             groupBox2.Controls.Add(ngaybatdau_datetime);
             groupBox2.Controls.Add(comboBox_trthai);
@@ -224,14 +231,14 @@
             // 
             // dateTime_endtime
             // 
-            dateTime_endtime.Location = new Point(852, 191);
+            dateTime_endtime.Location = new Point(753, 187);
             dateTime_endtime.Name = "dateTime_endtime";
             dateTime_endtime.Size = new Size(384, 30);
             dateTime_endtime.TabIndex = 3;
             // 
             // ngaybatdau_datetime
             // 
-            ngaybatdau_datetime.Location = new Point(852, 121);
+            ngaybatdau_datetime.Location = new Point(753, 117);
             ngaybatdau_datetime.Name = "ngaybatdau_datetime";
             ngaybatdau_datetime.Size = new Size(384, 30);
             ngaybatdau_datetime.TabIndex = 3;
@@ -239,7 +246,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(681, 124);
+            label7.Location = new Point(592, 119);
             label7.Name = "label7";
             label7.Size = new Size(121, 23);
             label7.TabIndex = 0;
@@ -248,7 +255,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(681, 196);
+            label5.Location = new Point(592, 191);
             label5.Name = "label5";
             label5.Size = new Size(127, 23);
             label5.TabIndex = 0;
@@ -257,7 +264,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(692, 264);
+            label6.Location = new Point(592, 259);
             label6.Name = "label6";
             label6.Size = new Size(95, 23);
             label6.TabIndex = 0;
@@ -265,18 +272,37 @@
             // 
             // txt_giatrigiam
             // 
-            txt_giatrigiam.Location = new Point(852, 47);
+            txt_giatrigiam.Location = new Point(753, 43);
             txt_giatrigiam.Name = "txt_giatrigiam";
             txt_giatrigiam.Size = new Size(384, 30);
             txt_giatrigiam.TabIndex = 1;
             // 
             // txt_tenvou
             // 
-            txt_tenvou.Location = new Point(190, 121);
+            txt_tenvou.Location = new Point(154, 121);
             txt_tenvou.Name = "txt_tenvou";
             txt_tenvou.ReadOnly = true;
             txt_tenvou.Size = new Size(384, 30);
             txt_tenvou.TabIndex = 1;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(1269, 26);
+            label8.Name = "label8";
+            label8.Size = new Size(74, 23);
+            label8.TabIndex = 4;
+            label8.Text = "Voucher";
+            // 
+            // pictureBox_voucher
+            // 
+            pictureBox_voucher.BackgroundImage = Properties.Resources.voucher;
+            pictureBox_voucher.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox_voucher.Location = new Point(1269, 121);
+            pictureBox_voucher.Name = "pictureBox_voucher";
+            pictureBox_voucher.Size = new Size(80, 79);
+            pictureBox_voucher.TabIndex = 5;
+            pictureBox_voucher.TabStop = false;
             // 
             // Voucherfrm
             // 
@@ -294,6 +320,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_voucher).EndInit();
             ResumeLayout(false);
         }
 
@@ -321,5 +348,7 @@
         private DateTimePicker dateTime_endtime;
         private DateTimePicker ngaybatdau_datetime;
         private TextBox txt_giatrigiam;
+        private Label label8;
+        private PictureBox pictureBox_voucher;
     }
 }

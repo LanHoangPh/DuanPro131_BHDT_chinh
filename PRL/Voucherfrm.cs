@@ -26,9 +26,14 @@ namespace PRL
             string searchValue = txt_vou_sreach.Text.ToLower();
             var allDatas = voucherSver.GetAllVouchers();
 
-            var filteredData = allDatas.Where(kh => kh.TenVoucher.ToLower().Contains(searchValue)).ToList();
+            // Lọc dữ liệu dựa trên giá trị tìm kiếm
+            var filteredData = allDatas.Where(voucher => voucher.TenVoucher.ToLower().Contains(searchValue)).ToList();
+
+            // Xóa các hàng hiện tại trong DataGridView
             dataGridView_mavou.Rows.Clear();
-            foreach (var data in allDatas)
+
+            // Thêm các dữ liệu đã lọc vào DataGridView
+            foreach (var data in filteredData)
             {
                 dataGridView_mavou.Rows.Add(data.MaVoucher, data.TenVoucher, data.MoTa, data.GiaTriGiam, data.NgayBatDau, data.NgayKetThuc, data.TrangThai);
             }

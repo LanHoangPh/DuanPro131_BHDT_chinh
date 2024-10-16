@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaleFrm));
             groupBox2 = new GroupBox();
             label8 = new Label();
             dateTime_endtime_km = new DateTimePicker();
@@ -52,13 +53,17 @@
             btn_update_vou = new Button();
             btnadd_vou = new Button();
             dataGridView_km = new DataGridView();
+            pictureBox_sale = new PictureBox();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_km).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_sale).BeginInit();
             SuspendLayout();
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.FromArgb(128, 255, 128);
+            groupBox2.Controls.Add(pictureBox_sale);
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(dateTime_endtime_km);
             groupBox2.Controls.Add(ngaybatdau_datetime_km);
@@ -86,7 +91,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(1355, 23);
+            label8.Location = new Point(1257, 32);
             label8.Name = "label8";
             label8.Size = new Size(104, 23);
             label8.TabIndex = 4;
@@ -94,14 +99,14 @@
             // 
             // dateTime_endtime_km
             // 
-            dateTime_endtime_km.Location = new Point(852, 191);
+            dateTime_endtime_km.Location = new Point(778, 190);
             dateTime_endtime_km.Name = "dateTime_endtime_km";
             dateTime_endtime_km.Size = new Size(384, 30);
             dateTime_endtime_km.TabIndex = 3;
             // 
             // ngaybatdau_datetime_km
             // 
-            ngaybatdau_datetime_km.Location = new Point(852, 121);
+            ngaybatdau_datetime_km.Location = new Point(778, 120);
             ngaybatdau_datetime_km.Name = "ngaybatdau_datetime_km";
             ngaybatdau_datetime_km.Size = new Size(384, 30);
             ngaybatdau_datetime_km.TabIndex = 3;
@@ -110,7 +115,7 @@
             // 
             comboBox_trthai_km.FormattingEnabled = true;
             comboBox_trthai_km.Items.AddRange(new object[] { "Không Hoạt Động", "Hoạt Động" });
-            comboBox_trthai_km.Location = new Point(852, 264);
+            comboBox_trthai_km.Location = new Point(778, 263);
             comboBox_trthai_km.Name = "comboBox_trthai_km";
             comboBox_trthai_km.Size = new Size(384, 31);
             comboBox_trthai_km.TabIndex = 2;
@@ -118,7 +123,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(687, 122);
+            label7.Location = new Point(613, 121);
             label7.Name = "label7";
             label7.Size = new Size(121, 23);
             label7.TabIndex = 0;
@@ -127,7 +132,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(687, 194);
+            label5.Location = new Point(613, 193);
             label5.Name = "label5";
             label5.Size = new Size(127, 23);
             label5.TabIndex = 0;
@@ -136,7 +141,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(698, 262);
+            label6.Location = new Point(624, 261);
             label6.Name = "label6";
             label6.Size = new Size(95, 23);
             label6.TabIndex = 0;
@@ -162,7 +167,7 @@
             // 
             // txt_motakm
             // 
-            txt_motakm.Location = new Point(190, 196);
+            txt_motakm.Location = new Point(172, 196);
             txt_motakm.Name = "txt_motakm";
             txt_motakm.Size = new Size(384, 30);
             txt_motakm.TabIndex = 1;
@@ -170,7 +175,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(687, 51);
+            label1.Location = new Point(613, 50);
             label1.Name = "label1";
             label1.Size = new Size(142, 23);
             label1.TabIndex = 0;
@@ -178,21 +183,21 @@
             // 
             // txt_giatrigiam_km
             // 
-            txt_giatrigiam_km.Location = new Point(852, 47);
+            txt_giatrigiam_km.Location = new Point(778, 46);
             txt_giatrigiam_km.Name = "txt_giatrigiam_km";
             txt_giatrigiam_km.Size = new Size(384, 30);
             txt_giatrigiam_km.TabIndex = 1;
             // 
             // txt_tenkm
             // 
-            txt_tenkm.Location = new Point(190, 121);
+            txt_tenkm.Location = new Point(172, 121);
             txt_tenkm.Name = "txt_tenkm";
             txt_tenkm.Size = new Size(384, 30);
             txt_tenkm.TabIndex = 1;
             // 
             // txt_makm
             // 
-            txt_makm.Location = new Point(190, 50);
+            txt_makm.Location = new Point(172, 50);
             txt_makm.Name = "txt_makm";
             txt_makm.ReadOnly = true;
             txt_makm.Size = new Size(384, 30);
@@ -209,6 +214,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.FromArgb(128, 255, 128);
             groupBox1.Controls.Add(txt_km_sreach);
             groupBox1.Controls.Add(btn_close_vou);
             groupBox1.Controls.Add(clear_vou);
@@ -300,6 +306,16 @@
             dataGridView_km.TabIndex = 13;
             dataGridView_km.CellClick += dataGridView_km_CellClick;
             // 
+            // pictureBox_sale
+            // 
+            pictureBox_sale.BackgroundImage = (Image)resources.GetObject("pictureBox_sale.BackgroundImage");
+            pictureBox_sale.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox_sale.Location = new Point(1268, 120);
+            pictureBox_sale.Name = "pictureBox_sale";
+            pictureBox_sale.Size = new Size(80, 79);
+            pictureBox_sale.TabIndex = 6;
+            pictureBox_sale.TabStop = false;
+            // 
             // SaleFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -316,6 +332,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_km).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_sale).EndInit();
             ResumeLayout(false);
         }
 
@@ -345,5 +362,6 @@
         private Button btnadd_vou;
         private DataGridView dataGridView_km;
         private Label label8;
+        private PictureBox pictureBox_sale;
     }
 }

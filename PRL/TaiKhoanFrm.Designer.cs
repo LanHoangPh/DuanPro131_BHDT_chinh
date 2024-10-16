@@ -47,13 +47,16 @@
             label1 = new Label();
             txt_tentk = new TextBox();
             label2 = new Label();
+            pictureBox_tk = new PictureBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_taik).BeginInit();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_tk).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.FromArgb(128, 255, 128);
             groupBox1.Controls.Add(textBox_tk_sreach);
             groupBox1.Controls.Add(btn_close_tk);
             groupBox1.Controls.Add(clear_tk);
@@ -171,6 +174,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.FromArgb(128, 255, 128);
+            groupBox2.Controls.Add(pictureBox_tk);
             groupBox2.Controls.Add(comboBox_role);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label3);
@@ -247,6 +252,16 @@
             label2.TabIndex = 0;
             label2.Text = "Tên Tài Khoản";
             // 
+            // pictureBox_tk
+            // 
+            pictureBox_tk.BackgroundImage = (Image)resources.GetObject("pictureBox_tk.BackgroundImage");
+            pictureBox_tk.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox_tk.Location = new Point(63, 108);
+            pictureBox_tk.Name = "pictureBox_tk";
+            pictureBox_tk.Size = new Size(80, 79);
+            pictureBox_tk.TabIndex = 7;
+            pictureBox_tk.TabStop = false;
+            // 
             // TaiKhoanFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -263,6 +278,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView_taik).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_tk).EndInit();
             ResumeLayout(false);
         }
 
@@ -286,5 +302,6 @@
         private Button btn_khoa_tk;
         private Button btn_mokhoa_tk;
         private ComboBox comboBox_role;
+        private PictureBox pictureBox_tk;
     }
 }

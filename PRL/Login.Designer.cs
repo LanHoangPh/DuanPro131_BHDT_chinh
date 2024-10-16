@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             panel1 = new Panel();
             pictureBox3 = new PictureBox();
             checkBox1 = new CheckBox();
@@ -46,7 +47,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.White;
+            panel1.BackColor = Color.DeepSkyBlue;
             panel1.Controls.Add(pictureBox3);
             panel1.Controls.Add(checkBox1);
             panel1.Controls.Add(pictureBox2);
@@ -55,18 +56,19 @@
             panel1.Controls.Add(btn_login);
             panel1.Controls.Add(txt_pass);
             panel1.Controls.Add(txt_user);
-            panel1.Location = new Point(119, 58);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(792, 457);
+            panel1.Size = new Size(1081, 608);
             panel1.TabIndex = 0;
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.tải_xuống;
-            pictureBox3.Location = new Point(324, 64);
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(51, 82);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(171, 125);
+            pictureBox3.Size = new Size(447, 416);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 6;
             pictureBox3.TabStop = false;
@@ -74,7 +76,7 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(255, 351);
+            checkBox1.Location = new Point(731, 353);
             checkBox1.Margin = new Padding(4, 3, 4, 3);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(110, 27);
@@ -86,7 +88,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.a3;
-            pictureBox2.Location = new Point(169, 290);
+            pictureBox2.Location = new Point(557, 269);
             pictureBox2.Margin = new Padding(4, 3, 4, 3);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(56, 52);
@@ -97,7 +99,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.a1;
-            pictureBox1.Location = new Point(169, 221);
+            pictureBox1.Location = new Point(557, 161);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(56, 52);
@@ -108,11 +110,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(341, 13);
+            label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(693, 70);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(135, 31);
+            label1.Size = new Size(200, 46);
             label1.TabIndex = 3;
             label1.Text = "Đăng Nhập";
             // 
@@ -120,7 +122,7 @@
             // 
             btn_login.BackColor = Color.Cyan;
             btn_login.FlatStyle = FlatStyle.Flat;
-            btn_login.Location = new Point(305, 392);
+            btn_login.Location = new Point(703, 427);
             btn_login.Margin = new Padding(4, 3, 4, 3);
             btn_login.Name = "btn_login";
             btn_login.Size = new Size(190, 51);
@@ -131,7 +133,7 @@
             // 
             // txt_pass
             // 
-            txt_pass.Location = new Point(250, 295);
+            txt_pass.Location = new Point(626, 274);
             txt_pass.Margin = new Padding(4, 3, 4, 3);
             txt_pass.Multiline = true;
             txt_pass.Name = "txt_pass";
@@ -142,7 +144,7 @@
             // 
             // txt_user
             // 
-            txt_user.Location = new Point(250, 228);
+            txt_user.Location = new Point(626, 168);
             txt_user.Margin = new Padding(4, 3, 4, 3);
             txt_user.Multiline = true;
             txt_user.Name = "txt_user";
@@ -152,8 +154,9 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.Red;
+            button1.BackColor = Color.OrangeRed;
             button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.Black;
             button1.Location = new Point(990, 1);
             button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";
@@ -167,7 +170,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(128, 255, 128);
+            BackColor = Color.DarkTurquoise;
             ClientSize = new Size(1081, 608);
             Controls.Add(button1);
             Controls.Add(panel1);

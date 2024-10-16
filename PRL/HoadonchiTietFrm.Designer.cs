@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HoadonchiTietFrm));
             label5 = new Label();
             label3 = new Label();
             txt_mahd_ct = new TextBox();
-            txt_hdct_sreach = new TextBox();
             btn_close_hdctf = new Button();
             clear_hdct = new Button();
             btn_delete_hdctf = new Button();
@@ -44,17 +44,19 @@
             txt_mact = new TextBox();
             label2 = new Label();
             groupBox2 = new GroupBox();
+            pictureBox_hoadonchitiet = new PictureBox();
             label4 = new Label();
             txt_soluong_ct = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView_hoadonCTf).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_hoadonchitiet).BeginInit();
             SuspendLayout();
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(129, 212);
+            label5.Location = new Point(63, 214);
             label5.Name = "label5";
             label5.Size = new Size(119, 23);
             label5.TabIndex = 0;
@@ -63,7 +65,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(127, 139);
+            label3.Location = new Point(61, 141);
             label3.Name = "label3";
             label3.Size = new Size(111, 23);
             label3.TabIndex = 0;
@@ -71,27 +73,17 @@
             // 
             // txt_mahd_ct
             // 
-            txt_mahd_ct.Location = new Point(261, 137);
+            txt_mahd_ct.Location = new Point(190, 139);
             txt_mahd_ct.Name = "txt_mahd_ct";
             txt_mahd_ct.ReadOnly = true;
             txt_mahd_ct.Size = new Size(384, 30);
             txt_mahd_ct.TabIndex = 1;
             // 
-            // txt_hdct_sreach
-            // 
-            txt_hdct_sreach.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_hdct_sreach.Location = new Point(12, 232);
-            txt_hdct_sreach.Multiline = true;
-            txt_hdct_sreach.Name = "txt_hdct_sreach";
-            txt_hdct_sreach.PlaceholderText = "Tìm Kiếm ở Đây";
-            txt_hdct_sreach.Size = new Size(315, 41);
-            txt_hdct_sreach.TabIndex = 1;
-            // 
             // btn_close_hdctf
             // 
             btn_close_hdctf.BackgroundImage = Properties.Resources.close;
             btn_close_hdctf.BackgroundImageLayout = ImageLayout.Zoom;
-            btn_close_hdctf.Location = new Point(193, 372);
+            btn_close_hdctf.Location = new Point(197, 272);
             btn_close_hdctf.Name = "btn_close_hdctf";
             btn_close_hdctf.Size = new Size(93, 51);
             btn_close_hdctf.TabIndex = 0;
@@ -102,7 +94,7 @@
             // 
             clear_hdct.BackgroundImage = Properties.Resources.clear;
             clear_hdct.BackgroundImageLayout = ImageLayout.Zoom;
-            clear_hdct.Location = new Point(31, 372);
+            clear_hdct.Location = new Point(39, 272);
             clear_hdct.Name = "clear_hdct";
             clear_hdct.Size = new Size(93, 51);
             clear_hdct.TabIndex = 0;
@@ -131,7 +123,7 @@
             // 
             // txt_masp_ct
             // 
-            txt_masp_ct.Location = new Point(261, 213);
+            txt_masp_ct.Location = new Point(190, 215);
             txt_masp_ct.Name = "txt_masp_ct";
             txt_masp_ct.ReadOnly = true;
             txt_masp_ct.Size = new Size(384, 30);
@@ -139,7 +131,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(txt_hdct_sreach);
+            groupBox1.BackColor = Color.FromArgb(128, 255, 128);
             groupBox1.Controls.Add(btn_close_hdctf);
             groupBox1.Controls.Add(clear_hdct);
             groupBox1.Controls.Add(btn_delete_hdctf);
@@ -155,16 +147,16 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(1360, 26);
+            label8.Location = new Point(1241, 26);
             label8.Name = "label8";
-            label8.Size = new Size(81, 23);
+            label8.Size = new Size(148, 23);
             label8.TabIndex = 4;
-            label8.Text = "Hóa Đơn";
+            label8.Text = "Hóa Đơn Chi Tiết";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(707, 63);
+            label1.Location = new Point(636, 65);
             label1.Name = "label1";
             label1.Size = new Size(120, 23);
             label1.TabIndex = 0;
@@ -172,7 +164,7 @@
             // 
             // txt_giasp_ct
             // 
-            txt_giasp_ct.Location = new Point(841, 60);
+            txt_giasp_ct.Location = new Point(770, 62);
             txt_giasp_ct.Name = "txt_giasp_ct";
             txt_giasp_ct.ReadOnly = true;
             txt_giasp_ct.Size = new Size(384, 30);
@@ -180,7 +172,7 @@
             // 
             // txt_mact
             // 
-            txt_mact.Location = new Point(261, 56);
+            txt_mact.Location = new Point(190, 58);
             txt_mact.Name = "txt_mact";
             txt_mact.ReadOnly = true;
             txt_mact.Size = new Size(384, 30);
@@ -189,7 +181,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(127, 59);
+            label2.Location = new Point(61, 61);
             label2.Name = "label2";
             label2.Size = new Size(102, 23);
             label2.TabIndex = 0;
@@ -197,6 +189,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.FromArgb(128, 255, 128);
+            groupBox2.Controls.Add(pictureBox_hoadonchitiet);
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label3);
@@ -217,10 +211,20 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông Tin";
             // 
+            // pictureBox_hoadonchitiet
+            // 
+            pictureBox_hoadonchitiet.BackgroundImage = (Image)resources.GetObject("pictureBox_hoadonchitiet.BackgroundImage");
+            pictureBox_hoadonchitiet.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox_hoadonchitiet.Location = new Point(1266, 90);
+            pictureBox_hoadonchitiet.Name = "pictureBox_hoadonchitiet";
+            pictureBox_hoadonchitiet.Size = new Size(80, 79);
+            pictureBox_hoadonchitiet.TabIndex = 7;
+            pictureBox_hoadonchitiet.TabStop = false;
+            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(707, 136);
+            label4.Location = new Point(636, 138);
             label4.Name = "label4";
             label4.Size = new Size(87, 23);
             label4.TabIndex = 0;
@@ -228,7 +232,7 @@
             // 
             // txt_soluong_ct
             // 
-            txt_soluong_ct.Location = new Point(841, 133);
+            txt_soluong_ct.Location = new Point(770, 135);
             txt_soluong_ct.Name = "txt_soluong_ct";
             txt_soluong_ct.ReadOnly = true;
             txt_soluong_ct.Size = new Size(384, 30);
@@ -247,9 +251,9 @@
             Load += HoadonchiTietFrm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView_hoadonCTf).EndInit();
             groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_hoadonchitiet).EndInit();
             ResumeLayout(false);
         }
 
@@ -257,7 +261,6 @@
         private Label label5;
         private Label label3;
         private TextBox txt_mahd_ct;
-        private TextBox txt_hdct_sreach;
         private Button btn_close_hdctf;
         private Button clear_hdct;
         private Button btn_delete_hdctf;
@@ -272,5 +275,6 @@
         private GroupBox groupBox2;
         private Label label4;
         private TextBox txt_soluong_ct;
+        private PictureBox pictureBox_hoadonchitiet;
     }
 }

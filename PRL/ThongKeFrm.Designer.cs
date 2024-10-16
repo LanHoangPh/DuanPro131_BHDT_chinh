@@ -53,6 +53,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(128, 255, 128);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(lb_dt_thanh);
             panel1.Controls.Add(label4);
@@ -64,6 +65,7 @@
             panel1.Controls.Add(lb_dt_ngay_value);
             panel1.Dock = DockStyle.Top;
             panel1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            panel1.ForeColor = Color.Black;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1453, 372);
@@ -138,7 +140,7 @@
             // lb_dt_thang_value
             // 
             lb_dt_thang_value.AutoSize = true;
-            lb_dt_thang_value.Location = new Point(741, 287);
+            lb_dt_thang_value.Location = new Point(675, 287);
             lb_dt_thang_value.Name = "lb_dt_thang_value";
             lb_dt_thang_value.Size = new Size(40, 23);
             lb_dt_thang_value.TabIndex = 1;
@@ -147,7 +149,7 @@
             // lb_dt_ngay_value
             // 
             lb_dt_ngay_value.AutoSize = true;
-            lb_dt_ngay_value.Location = new Point(236, 287);
+            lb_dt_ngay_value.Location = new Point(170, 287);
             lb_dt_ngay_value.Name = "lb_dt_ngay_value";
             lb_dt_ngay_value.Size = new Size(40, 23);
             lb_dt_ngay_value.TabIndex = 0;
@@ -155,6 +157,7 @@
             // 
             // panel2
             // 
+            panel2.BackColor = Color.FromArgb(128, 255, 128);
             panel2.Controls.Add(btb_thongke);
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 372);
@@ -184,6 +187,7 @@
             // 
             // dataGridView_hdtk
             // 
+            dataGridView_hdtk.BackgroundColor = Color.Silver;
             dataGridView_hdtk.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_hdtk.Location = new Point(6, 6);
             dataGridView_hdtk.Name = "dataGridView_hdtk";

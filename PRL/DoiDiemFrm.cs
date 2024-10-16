@@ -52,7 +52,7 @@ namespace PRL
 
             int diemCanDoi;
             // Kiểm tra nếu số điểm cần đổi là số hợp lệ
-            if (!int.TryParse(txt_diemcandoi.Text, out diemCanDoi) || diemCanDoi <= 0 && diemCanDoi >=1000)
+            if (!int.TryParse(txt_diemcandoi.Text, out diemCanDoi) || diemCanDoi <= 0 && diemCanDoi >= 1000)
             {
                 MessageBox.Show("Số điểm cần đổi không hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -176,8 +176,45 @@ namespace PRL
 
             if (selectedKhachHang != null)
             {
-                txt_tenkhdd.Text = selectedKhachHang.TenKhachHang ;
+                txt_tenkhdd.Text = selectedKhachHang.TenKhachHang;
                 txt_diemkhdd.Text = selectedKhachHang.DiemTichLuy.ToString();
+            }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clear_doi_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+        public void ClearForm()
+        {
+            txt_madoidiem.Text = "";
+            txt_diemcandoi.Text = "";
+            txt_diemkhdd.Text = "";
+            txt_mavoucherdd.Text = "";
+            txt_tenkhdd.Text = "";
+            txt_tenkhdd.Text = "";
+        }
+
+        private void txt_dd_sreach_TextChanged(object sender, EventArgs e)
+        {
+            string searchValue = txt_dd_sreach.Text.ToLower();
+            var allDatas = _doiDiemsver.GetAllDoiDiem();
+
+            // Lọc dữ liệu dựa trên giá trị tìm kiếm
+            var filteredData = allDatas.Where(voucher => voucher.SoDienThoaiKhachHang.ToLower().Contains(searchValue)).ToList();
+
+            // Xóa các hàng hiện tại trong DataGridView
+            dataGridView_doidiem.Rows.Clear();
+
+            // Thêm các dữ liệu đã lọc vào DataGridView
+            foreach (var data in allDatas)
+            {
+                dataGridView_doidiem.Rows.Add(data.MaDoiDiem, data.SoDienThoaiKhachHang, data.MaVoucher, data.NgayDoi, data.SoDiem);
             }
         }
     }
